@@ -17,11 +17,11 @@ const LoginForm = () => {
     const res = await getAuthStatus(idInstance, apiTokenInstance);
     console.log(res);
     if (res === 200) {
-      navigate("/");
       localStorage.setItem(
         "auth",
         JSON.stringify({ idInstance, apiTokenInstance })
       );
+      navigate("/");
     }
     setFetching(false);
   };
