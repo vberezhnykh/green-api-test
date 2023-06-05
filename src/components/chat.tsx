@@ -1,18 +1,19 @@
 import { createRef, useState } from "react";
-import { checkWhatsapp } from "../api/api";
+import { checkWhatsapp, sendMessage } from "../api/api";
+import Messages from "./messages";
 
 type Response = {
   existsWhatsapp: boolean;
 };
 
 const Chat = () => {
-  const ref = createRef<HTMLInputElement>();
+  const telInputRef = createRef<HTMLInputElement>();
   const [tel, setTel] = useState<null | string>(null);
   const [isFetching, setFetching] = useState(false);
   const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!ref.current) return;
-    const value = ref.current.value;
+    if (!telInputRef.current) return;
+    const value = telInputRef.current.value;
     setFetching(true);
     const res = (await checkWhatsapp(value)) as Response;
     setFetching(false);
@@ -29,7 +30,14 @@ const Chat = () => {
       <form onSubmit={submitForm}>
         <h2>Введите номер телефона получателя:</h2>
         <label htmlFor="tel">
-          +7 <input type="tel" name="tel" ref={ref} placeholder="9965224569" />
+          +7{" "}
+          <input
+            type="tel"
+            name="tel"
+            ref={telInputRef}
+            placeholder="9965224569"
+            defaultValue={"9965224569"}
+          />
         </label>
         <button type="submit" disabled={isFetching}>
           Открыть чат
@@ -38,11 +46,25 @@ const Chat = () => {
     );
   }
 
+  const chatInputRef = createRef<HTMLInputElement>();
+
+  const handleClick = async () => {
+    if (!chatInputRef.current) return;
+    const message = chatInputRef.current.value;
+    await sendMessage(tel, message);
+    chatInputRef.current.value = "";
+  };
+
   return (
     <section className="chat">
       <header>+{tel}</header>
-      <div className="chat__main">Chat</div>
-      <input type="text" name="chat" />
+      <div className="chat__main">
+        <Messages />
+      </div>
+      <div className="chat__input-container">
+        <input name="chat" className="chat__input" ref={chatInputRef} />
+        <button onClick={handleClick}>Send</button>
+      </div>
     </section>
   );
 };

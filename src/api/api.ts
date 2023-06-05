@@ -14,11 +14,17 @@ export async function getAuthStatus(
   }
 }
 
+function getAuthData() {
+  const auth = localStorage.getItem("auth");
+  if (!auth) throw "Not properly authorized";
+  return JSON.parse(auth);
+}
+
 export async function checkWhatsapp(tel: string) {
   try {
     const auth = localStorage.getItem("auth");
     if (!auth) throw "Not properly authorized";
-    const { idInstance, apiTokenInstance } = JSON.parse(auth);
+    const { idInstance, apiTokenInstance } = getAuthData();
     const res = await fetch(
       `${BASE_URL}/waInstance${idInstance}/checkWhatsapp/${apiTokenInstance}`,
       {
@@ -32,4 +38,21 @@ export async function checkWhatsapp(tel: string) {
   } catch (error) {
     console.log(error);
   }
+}
+
+export async function sendMessage(chatId: string, message: string) {
+  try {
+    const { idInstance, apiTokenInstance } = getAuthData();
+    const res = await fetch(
+      `${BASE_URL}/waInstance${idInstance}/sendMessage/${apiTokenInstance}`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          chatId: `${chatId}@c.us`,
+          message,
+        }),
+      }
+    );
+    return res.json();
+  } catch (error) {}
 }

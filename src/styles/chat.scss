@@ -16,3 +16,15 @@
   border: 1px solid black;
   padding: 1rem;
 }
+
+.chat__input-container {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+}
+
+.chat__input {
+  font-size: 1.6rem;
+  resize: none;
+  flex-grow: 1;
+}
