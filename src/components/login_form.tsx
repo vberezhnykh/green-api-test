@@ -3,13 +3,13 @@ import { getAuthStatus } from "../api/api";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-  const [isValid, setValid] = useState(true);
+  const [isFetching, setFetching] = useState(false);
 
   const navigate = useNavigate();
 
   const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setValid(false);
+    setFetching(true);
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
     const formJson = Object.fromEntries(formData.entries());
@@ -23,7 +23,7 @@ const LoginForm = () => {
         JSON.stringify({ idInstance, apiTokenInstance })
       );
     }
-    setValid(true);
+    setFetching(false);
   };
 
   return (
@@ -44,7 +44,7 @@ const LoginForm = () => {
           />
         </label>
       </fieldset>
-      <button type="submit" disabled={!isValid}>
+      <button type="submit" disabled={isFetching}>
         Войти
       </button>
     </form>

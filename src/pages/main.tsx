@@ -1,15 +1,15 @@
-import LoginForm from "../components/login_form";
+import Chat from "../components/chat";
 
-const Login = () => {
+const Main = () => {
   return (
     <>
       <header>Template Header</header>
       <main className="main">
-        <LoginForm />
+        <Chat />
       </main>
       <footer>Template Footer</footer>
     </>
   );
 };
 
-export default Login;
+export default Main;
