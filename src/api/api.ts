@@ -56,3 +56,24 @@ export async function sendMessage(chatId: string, message: string) {
     return res.json();
   } catch (error) {}
 }
+
+export async function recieveNotification() {
+  try {
+    const { idInstance, apiTokenInstance } = getAuthData();
+    const res = await fetch(
+      `${BASE_URL}/waInstance${idInstance}/receiveNotification/${apiTokenInstance}`
+    );
+    return res.json();
+  } catch (error) {}
+}
+
+export async function deleteNotification(id: number) {
+  try {
+    const { idInstance, apiTokenInstance } = getAuthData();
+    const res = await fetch(
+      `${BASE_URL}/waInstance${idInstance}/deleteNotification/${apiTokenInstance}/${id}`,
+      { method: "DELETE" }
+    );
+    return res.json();
+  } catch (error) {}
+}
