@@ -1,4 +1,36 @@
 .login__form {
   max-width: 50rem;
   font-size: 2rem;
+  background-color: $light_green;
+  padding: 1rem;
+  border-radius: 0.8rem;
+}
+
+.login__fieldset {
+  border: none;
+}
+
+.login__label {
+  font-weight: bold;
+}
+
+.login__input {
+  width: 100%;
+}
+
+.login__button {
+  background-color: $teal_green;
+  color: $white;
+  border: none;
+  border-radius: 0.8rem;
+  padding: 0.8rem 1.6rem;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}
+
+.login__suggestion-text {
+  font-size: 1.4rem;
 }

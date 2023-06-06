@@ -50,6 +50,8 @@ const Messages = () => {
   const [receiptId, setReceiptId] = useState<number | null>(null);
   const [messages, setMessages] = useState<Response[]>([]);
 
+  console.log(receiptId);
+
   useEffect(() => {
     const intervalId = setInterval(async () => {
       const res = (await recieveNotification()) as Response | null;

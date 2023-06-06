@@ -28,25 +28,37 @@ const LoginForm = () => {
 
   return (
     <form className="login__form" onSubmit={submitForm}>
-      <fieldset>
-        <label htmlFor="idInstance">
-          idInstance:
-          <input type="text" name="idInstance" defaultValue={"1101827763"} />
+      <fieldset className="login__fieldset">
+        <label htmlFor="idInstance" className="login__label">
+          idInstance:{" "}
+          <input
+            type="text"
+            name="idInstance"
+            defaultValue={"1101827763"}
+            className="login__input"
+          />
         </label>
       </fieldset>
-      <fieldset>
-        <label htmlFor="apiTokenInstance">
-          apiTokenInstance:
+      <fieldset className="login__fieldset">
+        <label htmlFor="apiTokenInstance" className="login__label">
+          apiTokenInstance:{" "}
           <input
             type="text"
             name="apiTokenInstance"
             defaultValue={"50de0c1ce6cf4993b3c6d49b4f582a3f054a19c2d24f41b1b9"}
+            className="login__input"
           />
         </label>
       </fieldset>
-      <button type="submit" disabled={isFetching}>
+      <button type="submit" disabled={isFetching} className="login__button">
         Войти
-      </button>
+      </button>{" "}
+      <span className="login__suggestion-text">
+        Нет аккаунта?{" "}
+        <a href="https://console.green-api.com/auth/register" target="_blank">
+          Зарегестрируйся
+        </a>
+      </span>
     </form>
   );
 };
