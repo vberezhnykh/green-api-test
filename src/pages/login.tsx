@@ -3,7 +3,6 @@ import LoginForm from "../components/login_form";
 const Login = () => {
   return (
     <>
-      <header>Template Header</header>
       <main className="main">
         <LoginForm />
       </main>

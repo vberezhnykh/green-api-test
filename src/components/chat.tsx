@@ -35,8 +35,8 @@ const Chat = () => {
             type="tel"
             name="tel"
             ref={telInputRef}
-            placeholder="9965224569"
-            defaultValue={"9965224569"}
+            placeholder="9936124569"
+            defaultValue={"9936124569"}
           />
         </label>
         <button type="submit" disabled={isFetching}>
@@ -57,7 +57,10 @@ const Chat = () => {
 
   return (
     <section className="chat">
-      <header>+{tel}</header>
+      <header>
+        <div>Profile photo</div>
+        <div>+{tel}</div>
+      </header>
       <div className="chat__main">
         <Messages />
       </div>

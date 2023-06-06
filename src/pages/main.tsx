@@ -3,7 +3,6 @@ import Chat from "../components/chat";
 const Main = () => {
   return (
     <>
-      <header>Template Header</header>
       <main className="main">
         <Chat />
       </main>
