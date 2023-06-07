@@ -90,7 +90,11 @@ const Messages = () => {
               {message.body.messageData.typeMessage === "textMessage"
                 ? message.body.messageData.textMessageData.textMessage
                 : message.body.messageData.extendedTextMessageData.text}{" "}
-              <span>{new Date(message.body.timestamp).getHours()}</span>
+              <span className="message__time">{`${new Date(
+                message.body.timestamp * 1000
+              ).getHours()}:${new Date(
+                message.body.timestamp * 1000
+              ).getMinutes()}`}</span>
             </li>
           ))}
         </ul>
