@@ -81,3 +81,22 @@
   border-radius: 1rem 0rem 2rem 1rem;
   background-color: $outcoming_chat_bubble;
 }
+
+.tel__label {
+  font-size: 2rem;
+}
+
+.tel__input {
+  font-size: 2rem;
+  margin-left: 0.6rem;
+  @include input();
+}
+
+.tel__button {
+  @include button();
+  color: $teal_green;
+
+  &:hover {
+    color: $white;
+  }
+}

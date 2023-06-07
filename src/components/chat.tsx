@@ -29,7 +29,7 @@ const Chat = () => {
     return (
       <form onSubmit={submitForm}>
         <h2>Введите номер телефона получателя:</h2>
-        <label htmlFor="tel">
+        <label htmlFor="tel" className="tel__label">
           +7{" "}
           <input
             type="tel"
@@ -37,9 +37,10 @@ const Chat = () => {
             ref={telInputRef}
             placeholder="9936124569"
             defaultValue={"9936124569"}
+            className="tel__input"
           />
         </label>
-        <button type="submit" disabled={isFetching}>
+        <button type="submit" disabled={isFetching} className="tel__button">
           Открыть чат
         </button>
       </form>

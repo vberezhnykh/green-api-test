@@ -19,40 +19,11 @@
 
 .login__input {
   width: 100%;
-  border-radius: 1rem;
-  outline: 0.2rem solid $teal_green_dark;
-  border: 0;
-  background-color: $chat_background;
-  outline-offset: 0.3rem;
-  padding: 1rem;
-  transition: 0.25s;
-  margin-top: 0.5rem;
+  @include input();
 }
 
 .login__button {
-  display: block;
-  margin: 1.5rem auto;
-  padding: 1.5rem 3rem;
-  text-align: center;
-  font-size: 1.6rem;
-  letter-spacing: 1px;
-  text-decoration: none;
-  color: $white;
-  background: transparent;
-  cursor: pointer;
-  transition: ease-out 0.5s;
-  border: 0.2rem solid $teal_green;
-  border-radius: 10px;
-  box-shadow: inset 0 0 0 0 $teal_green;
-
-  &:hover {
-    opacity: 0.8;
-    box-shadow: inset 0 -10rem 0 0 $teal_green;
-  }
-
-  &:active {
-    transform: scale(0.9);
-  }
+  @include button();
 }
 
 .login__suggestion-text {
