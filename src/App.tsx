@@ -6,12 +6,12 @@ import loader from "./features/redirect";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main />,
+    element: <Login />,
     loader,
   },
   {
-    path: "/login",
-    element: <Login />,
+    path: "/chat",
+    element: <Main />,
   },
 ]);
 

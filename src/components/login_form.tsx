@@ -21,7 +21,7 @@ const LoginForm = () => {
         "auth",
         JSON.stringify({ idInstance, apiTokenInstance })
       );
-      navigate("/");
+      navigate("/chat");
     }
     setFetching(false);
   };
@@ -56,7 +56,7 @@ const LoginForm = () => {
       <span className="login__suggestion-text">
         Нет аккаунта?{" "}
         <a href="https://console.green-api.com/auth/register" target="_blank">
-          Зарегестрируйся
+          Зарегистрируйся
         </a>
       </span>
     </form>
