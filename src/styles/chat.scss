@@ -95,6 +95,15 @@
   color: $time;
 }
 
+.chat__send-button {
+  cursor: pointer;
+  background-color: transparent;
+  padding: 0;
+  width: 3.2rem;
+  height: auto;
+  border: none;
+}
+
 .tel__label {
   font-size: 2rem;
 }
