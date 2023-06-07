@@ -7,11 +7,11 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Login />,
-    loader,
   },
   {
     path: "/chat",
     element: <Main />,
+    loader,
   },
 ]);
 

@@ -70,13 +70,15 @@ const Messages = () => {
     return () => clearInterval(intervalId);
   }, []);
 
+  const items = [...messages];
+
   return (
     <>
-      {messages.length === 0 ? (
+      {items.length === 0 ? (
         "Nothing has been sent yet"
       ) : (
         <ul className="messages-list">
-          {...messages.map((message) => (
+          {...items.map((message) => (
             <li
               key={uuidv4()}
               className={`message ${
@@ -88,6 +90,7 @@ const Messages = () => {
               {message.body.messageData.typeMessage === "textMessage"
                 ? message.body.messageData.textMessageData.textMessage
                 : message.body.messageData.extendedTextMessageData.text}{" "}
+              <span>{new Date(message.body.timestamp).getHours()}</span>
             </li>
           ))}
         </ul>
