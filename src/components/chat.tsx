@@ -58,7 +58,7 @@ const Chat = () => {
 
   return (
     <section className="chat">
-      <header>
+      <header className="chat__header">
         <div>Profile photo</div>
         <div>+{tel}</div>
       </header>
