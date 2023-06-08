@@ -19,7 +19,13 @@ const Messages: React.FC<MessagesProps> = ({ tel }) => {
         setReceiptId((prevState) => {
           if (prevState !== res.receiptId) {
             if (`${tel}@c.us` === res.body.senderData.chatId)
-              setMessages((current) => [...current, res]);
+              setMessages((current) => {
+                if (
+                  current.some((message) => message.receiptId === res.receiptId)
+                )
+                  return current;
+                return [...current, res];
+              });
             deleteNotification(res.receiptId);
           }
           return res.receiptId;
