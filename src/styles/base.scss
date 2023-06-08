@@ -27,6 +27,19 @@ body {
   flex-direction: column;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  color: $light_green;
+  justify-content: center;
+
+  img {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+}
+
 .main {
   display: flex;
   flex-direction: column;
