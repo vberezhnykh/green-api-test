@@ -2,10 +2,7 @@ import Chat from "../components/chat";
 import { createRef, useState } from "react";
 import { checkWhatsapp } from "../api/api";
 import Tel_Input from "../components/tel_input";
-
-type Response = {
-  existsWhatsapp: boolean;
-};
+import { ExistsWhatsappResponse } from "../types";
 
 const Main = () => {
   const telInputRef = createRef<HTMLInputElement>();
@@ -17,7 +14,7 @@ const Main = () => {
     if (!telInputRef.current) return;
     const value = telInputRef.current.value;
     setFetching(true);
-    const res = (await checkWhatsapp(value)) as Response;
+    const res = (await checkWhatsapp(value)) as ExistsWhatsappResponse;
     setFetching(false);
     if (!res.existsWhatsapp) return;
     if (value.length === 10) {

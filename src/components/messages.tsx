@@ -1,64 +1,18 @@
 import { useEffect, useState } from "react";
 import { deleteNotification, recieveNotification } from "../api/api";
 import { v4 as uuidv4 } from "uuid";
-
-type MessageData = {
-  typeMessage: "textMessage";
-  textMessageData: {
-    textMessage: string;
-  };
-};
-
-type ExtendedMessageData = {
-  typeMessage: "extendedTextMessage";
-  extendedTextMessageData: {
-    text: string;
-    description: string;
-    title: string;
-    previewType: string;
-    jpegThumbnail: string;
-  };
-};
-
-type Body = {
-  typeWebhook:
-    | "incomingMessageReceived"
-    | "outgoingMessageReceived"
-    | "outgoingAPIMessageReceived";
-  instanceData: {
-    idInstance: number;
-    wid: string;
-    typeInstance: string;
-  };
-  timestamp: number;
-  idMessage: string;
-  senderData: {
-    chatId: string;
-    sender: string;
-    chatName: string;
-    senderName: string;
-  };
-  messageData: MessageData | ExtendedMessageData;
-};
-
-type Response = {
-  receiptId: number;
-  body: Body;
-};
-
-type MessagesProps = {
-  tel: string;
-};
+import { RecieveNotificationResponse, MessagesProps } from "../types";
 
 const Messages: React.FC<MessagesProps> = ({ tel }) => {
   const [receiptId, setReceiptId] = useState<number | null>(null);
-  const [messages, setMessages] = useState<Response[]>([]);
+  const [messages, setMessages] = useState<RecieveNotificationResponse[]>([]);
 
   console.log(receiptId);
 
   useEffect(() => {
     const intervalId = setInterval(async () => {
-      const res = (await recieveNotification()) as Response | null;
+      const res =
+        (await recieveNotification()) as RecieveNotificationResponse | null;
       console.log(res);
       if (res == null) setReceiptId(null);
       else {

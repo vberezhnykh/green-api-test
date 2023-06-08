@@ -1,10 +1,7 @@
 import { createRef } from "react";
 import { sendMessage } from "../api/api";
 import Messages from "./messages";
-
-type ChatProps = {
-  tel: string;
-};
+import { ChatProps } from "../types";
 
 const Chat: React.FC<ChatProps> = ({ tel }) => {
   const chatInputRef = createRef<HTMLInputElement>();

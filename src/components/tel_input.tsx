@@ -1,10 +1,4 @@
-type SubmitForm = (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
-
-type Tel_Input_Props = {
-  submitForm: SubmitForm;
-  telInputRef: React.RefObject<HTMLInputElement>;
-  isFetching: boolean;
-};
+import { Tel_Input_Props } from "../types";
 
 const Tel_Input: React.FC<Tel_Input_Props> = ({
   submitForm,
