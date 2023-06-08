@@ -32,7 +32,6 @@ const Tel_Input: React.FC<Tel_Input_Props> = ({
           name="tel"
           ref={telInputRef}
           placeholder="9936124569"
-          defaultValue={"9936124569"}
           className="tel__input"
         />
       </label>

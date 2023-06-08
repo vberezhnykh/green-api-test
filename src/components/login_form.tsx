@@ -31,23 +31,13 @@ const LoginForm = () => {
       <fieldset className="login__fieldset">
         <label htmlFor="idInstance" className="login__label">
           idInstance:{" "}
-          <input
-            type="text"
-            name="idInstance"
-            defaultValue={"1101828986"}
-            className="login__input"
-          />
+          <input type="text" name="idInstance" className="login__input" />
         </label>
       </fieldset>
       <fieldset className="login__fieldset">
         <label htmlFor="apiTokenInstance" className="login__label">
           apiTokenInstance:{" "}
-          <input
-            type="text"
-            name="apiTokenInstance"
-            defaultValue={"49a5d5e376f94ed79cddebb82462c005b2a4b7e3a7c34c22b7"}
-            className="login__input"
-          />
+          <input type="text" name="apiTokenInstance" className="login__input" />
         </label>
       </fieldset>
       <button type="submit" disabled={isFetching} className="login__button">
