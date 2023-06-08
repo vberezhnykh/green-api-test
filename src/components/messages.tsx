@@ -4,32 +4,21 @@ import { v4 as uuidv4 } from "uuid";
 import { RecieveNotificationResponse, MessagesProps } from "../types";
 
 const Messages: React.FC<MessagesProps> = ({ tel }) => {
-  const [receiptId, setReceiptId] = useState<number | null>(null);
   const [messages, setMessages] = useState<RecieveNotificationResponse[]>([]);
-
-  console.log(receiptId);
 
   useEffect(() => {
     const intervalId = setInterval(async () => {
       const res =
         (await recieveNotification()) as RecieveNotificationResponse | null;
-      if (res == null) setReceiptId(null);
-      else {
-        setReceiptId((prevState) => {
-          if (prevState !== res.receiptId) return res.receiptId;
-          if (`${tel}@c.us` === res.body.senderData.chatId) {
-            setMessages((current) => {
-              return current.some(
-                (message) => message.receiptId === res.receiptId
-              )
-                ? current
-                : [...current, res];
-            });
-          }
-          deleteNotification(res.receiptId);
-          return res.receiptId;
+      if (res == null) return;
+      if (`${tel}@c.us` === res.body.senderData.chatId) {
+        setMessages((current) => {
+          return current.some((message) => message.receiptId === res.receiptId)
+            ? current
+            : [...current, res];
         });
       }
+      deleteNotification(res.receiptId);
     }, 1000);
     return () => clearInterval(intervalId);
   }, []);
