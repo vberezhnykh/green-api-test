@@ -35,3 +35,14 @@ body {
   flex-grow: 1;
   padding: 1rem;
 }
+
+.footer {
+  font-size: 1.6rem;
+
+  a {
+    color: $teal_green;
+    &:visited {
+      color: $teal_green;
+    }
+  }
+}

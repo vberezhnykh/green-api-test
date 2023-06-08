@@ -1,3 +1,4 @@
+import Footer from "../components/footer";
 import LoginForm from "../components/login_form";
 
 const Login = () => {
@@ -6,7 +7,7 @@ const Login = () => {
       <main className="main">
         <LoginForm />
       </main>
-      <footer>Template Footer</footer>
+      <Footer />
     </>
   );
 };

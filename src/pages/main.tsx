@@ -3,6 +3,7 @@ import { createRef, useState } from "react";
 import { checkWhatsapp } from "../api/api";
 import Tel_Input from "../components/tel_input";
 import { ExistsWhatsappResponse } from "../types";
+import Footer from "../components/footer";
 
 const Main = () => {
   const telInputRef = createRef<HTMLInputElement>();
@@ -37,7 +38,7 @@ const Main = () => {
           <Chat tel={tel} />
         )}
       </main>
-      <footer>Template Footer</footer>
+      <Footer />
     </>
   );
 };
