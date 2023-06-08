@@ -13,21 +13,20 @@ const Messages: React.FC<MessagesProps> = ({ tel }) => {
     const intervalId = setInterval(async () => {
       const res =
         (await recieveNotification()) as RecieveNotificationResponse | null;
-      console.log(res);
       if (res == null) setReceiptId(null);
       else {
         setReceiptId((prevState) => {
-          if (prevState !== res.receiptId) {
-            if (`${tel}@c.us` === res.body.senderData.chatId)
-              setMessages((current) => {
-                if (
-                  current.some((message) => message.receiptId === res.receiptId)
-                )
-                  return current;
-                return [...current, res];
-              });
-            deleteNotification(res.receiptId);
+          if (prevState !== res.receiptId) return res.receiptId;
+          if (`${tel}@c.us` === res.body.senderData.chatId) {
+            setMessages((current) => {
+              return current.some(
+                (message) => message.receiptId === res.receiptId
+              )
+                ? current
+                : [...current, res];
+            });
           }
+          deleteNotification(res.receiptId);
           return res.receiptId;
         });
       }
