@@ -46,7 +46,11 @@ type Response = {
   body: Body;
 };
 
-const Messages = () => {
+type MessagesProps = {
+  tel: string;
+};
+
+const Messages: React.FC<MessagesProps> = ({ tel }) => {
   const [receiptId, setReceiptId] = useState<number | null>(null);
   const [messages, setMessages] = useState<Response[]>([]);
 
@@ -60,13 +64,14 @@ const Messages = () => {
       else {
         setReceiptId((prevState) => {
           if (prevState !== res.receiptId) {
-            setMessages((current) => [...current, res]);
+            if (`${tel}@c.us` === res.body.senderData.chatId)
+              setMessages((current) => [...current, res]);
             deleteNotification(res.receiptId);
           }
           return res.receiptId;
         });
       }
-    }, 5000);
+    }, 1000);
     return () => clearInterval(intervalId);
   }, []);
 

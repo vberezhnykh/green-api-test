@@ -28,7 +28,7 @@ const Chat: React.FC<ChatProps> = ({ tel }) => {
         <div>+{tel}</div>
       </header>
       <div className="chat__main">
-        <Messages />
+        <Messages tel={tel} />
       </div>
       <div className="chat__input-container">
         <input
