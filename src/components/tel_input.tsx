@@ -1,10 +1,27 @@
-import { Tel_Input_Props } from "../types";
+import { useEffect } from "react";
+import { deleteNotification, recieveNotification } from "../api/api";
+import { RecieveNotificationResponse, Tel_Input_Props } from "../types";
 
 const Tel_Input: React.FC<Tel_Input_Props> = ({
   submitForm,
   telInputRef,
   isFetching,
 }) => {
+  useEffect(() => {
+    const clearCurrentNotifications = async () => {
+      let res = (await recieveNotification()) as RecieveNotificationResponse;
+      let loopCounter = 0;
+      while (res !== null) {
+        if (loopCounter === 50) return;
+        await deleteNotification(res.receiptId);
+        res = await recieveNotification();
+        loopCounter++;
+      }
+      return;
+    };
+    clearCurrentNotifications();
+  }, []);
+
   return (
     <form onSubmit={submitForm}>
       <h2>Введите номер телефона получателя:</h2>
